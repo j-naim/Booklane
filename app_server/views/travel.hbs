@@ -1,0 +1,31 @@
+{{> header}}
+
+<div id="contents">
+  <div class="box">
+    <div>
+      <div id="site_content">
+        <div id="content">
+          <h1>Travel</h1>
+
+          {{#if message}}
+            <p class="status-message">{{message}}</p>
+          {{/if}}
+
+          {{#each listings}}
+            <h2><a href="/travel">{{this.name}}</a></h2>
+            <div class="trip">
+              <a href="/travel">
+                <img class="trip-img" src="{{this.image}}" alt="{{this.name}}" />
+              </a>
+              {{{this.description}}}
+            </div>
+            <div class="clear"></div>
+            <hr />
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{> footer}}

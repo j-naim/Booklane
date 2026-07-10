@@ -1,0 +1,32 @@
+[
+  {
+    "code": "GR001",
+    "name": "Gale Reef",
+    "length": "5 Days / 6 Nights",
+    "start": "2026-02-01T08:00:00Z",
+    "resort": "Emerald Bay, 3 stars",
+    "perPerson": "799.00",
+    "image": "images/reef1.jpg",
+    "description": "<p><strong>Gale Reef</strong></p>"
+  },
+  {
+    "code": "DR002",
+    "name": "Dawson's Reef",
+    "length": "5 Days / 6 Nights",
+    "start": "2026-02-01T08:00:00Z",
+    "resort": "Blue Lagoon, 4 stars",
+    "perPerson": "1299.00",
+    "image": "images/reef2.jpg",
+    "description": "<p><strong>Dawson's Reef</strong></p>"
+  },
+  {
+    "code": "CR003",
+    "name": "Claire's Reef",
+    "length": "5 Days / 6 Nihgts",
+    "start": "2026-02-01T08:00:00Z",
+    "resort": "Coral Sands, 5 stars",
+    "perPerson": "1999.00",
+    "image": "images/reef3.jpg",
+    "description": "<p><strong>Claire's Reef</strong></p>"
+  }
+]

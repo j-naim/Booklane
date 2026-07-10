@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+app_admin/node_modules/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+app_admin/dist/
+app_admin/.angular/
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+Thumbs.db
+
+# Old submission artifacts
+*.zip
+travlr*.zip

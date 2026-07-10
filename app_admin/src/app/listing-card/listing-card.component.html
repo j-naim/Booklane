@@ -1,0 +1,5 @@
+<h3>{{ listing.name }} ({{ listing.code }})</h3>
+<p><strong>Resort:</strong> {{ listing.resort }}</p>
+<p><strong>Length:</strong> {{ listing.length }}</p>
+<p><strong>Per Person:</strong> {{ listing.perPerson }}</p>
+<a [routerLink]="['/edit', listing.code]">Edit</a>
