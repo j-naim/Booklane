@@ -25,6 +25,8 @@ mongoose.connection.on("disconnected", () => {
 });
 
 // Windows doesn't forward SIGINT cleanly without a readline shim.
+// Windows-specifc CTRL+C handling.
+// Linux/macOS recieve SIGINT noramally. 
 if (process.platform === "win32") {
   const rl = readLine.createInterface({
     input: process.stdin,
