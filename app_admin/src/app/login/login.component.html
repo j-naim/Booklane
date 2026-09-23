@@ -1,0 +1,37 @@
+<h2>Log in</h2>
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div>
+    <input
+      type="email"
+      formControlName="email"
+      placeholder="Email"
+      autocomplete="username"
+    />
+    <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.invalid">
+      <small *ngIf="loginForm.controls.email.errors?.['required']">Email is required.</small>
+      <small *ngIf="loginForm.controls.email.errors?.['email']">Enter a valid email.</small>
+    </div>
+  </div>
+
+  <div>
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Password"
+      autocomplete="current-password"
+    />
+    <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.invalid">
+      <small *ngIf="loginForm.controls.password.errors?.['required']">Password is required.</small>
+      <small *ngIf="loginForm.controls.password.errors?.['minlength']">Password must be at least 8 characters.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="loginForm.invalid || isSubmitting">
+    {{ isSubmitting ? 'Logging in...' : 'Log in' }}
+  </button>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+</form>
