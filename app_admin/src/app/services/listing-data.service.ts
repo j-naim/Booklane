@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
@@ -19,15 +19,7 @@ export interface Listing {
 export class ListingDataService {
   private readonly baseUrl = '/api/listings';
 
-  constructor(private http: HttpClient) {}
-
-  // Attach the stored JWT to protected write requests.
-  private getAuthHeaders(): HttpHeaders {
-    const token = localStorage.getItem('booklane-token') || '';
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`
-    });
-  }
+  constructor(private http: HttpClient) { }
 
   // Retrieve the full list of listings.
   getListings(): Observable<Listing[]> {
@@ -46,21 +38,21 @@ export class ListingDataService {
   // Send a new listing to the API for creation.
   addListing(listing: Listing): Observable<Listing> {
     return this.http
-      .post<Listing>(this.baseUrl, listing, { headers: this.getAuthHeaders() })
+      .post<Listing>(this.baseUrl, listing)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
   // Update an existing listing by code.
   updateListing(listingCode: string, listing: Listing): Observable<Listing> {
     return this.http
-      .put<Listing>(`${this.baseUrl}/${listingCode}`, listing, { headers: this.getAuthHeaders() })
+      .put<Listing>(`${this.baseUrl}/${listingCode}`, listing)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
   // Delete a listing by code.
   deleteListing(listingCode: string): Observable<void> {
     return this.http
-      .delete<void>(`${this.baseUrl}/${listingCode}`, { headers: this.getAuthHeaders() })
+      .delete<void>(`${this.baseUrl}/${listingCode}`)
       .pipe(catchError((error) => this.handleError(error)));
   }
 
