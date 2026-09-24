@@ -3,10 +3,11 @@ import { ListingListingComponent } from './listing-listing/listing-listing.compo
 import { ListingAddComponent } from './listing-add/listing-add.component';
 import { ListingEditComponent } from './listing-edit/listing-edit.component';
 import { LoginComponent } from './login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: ListingListingComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'add', component: ListingAddComponent },
-  { path: 'edit/:listingCode', component: ListingEditComponent },
+  { path: 'add', component: ListingAddComponent, canActivate: [authGuard] },
+  { path: 'edit/:listingCode', component: ListingEditComponent, canActivate: [authGuard] },
 ];
