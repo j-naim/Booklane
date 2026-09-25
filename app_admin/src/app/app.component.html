@@ -2,8 +2,18 @@
 
 <nav>
   <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Listings</a>
-  |
-  <a routerLink="/add" routerLinkActive="active">Add Listing</a>
+  
+  @if (authService.isLoggedIn()) {
+    |
+    <a routerLink="/add" routerLinkActive="active">Add Listing</a>
+    |
+    <span> Hi, {{ authService.currentUserName() }}</span> 
+    &bull;
+    <a href="#" (click)="$event.preventDefault(); logout()">Logout</a>
+  } @else {
+    |
+    <a routerLink="/login" routerLinkActive="active">Login</a>
+  }
 </nav>
 
 <router-outlet></router-outlet>
