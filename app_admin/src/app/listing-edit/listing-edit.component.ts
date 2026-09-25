@@ -13,6 +13,7 @@ import { ListingDataService, Listing } from '../services/listing-data.service';
 export class ListingEditComponent implements OnInit {
   listingCode = '';
   listing: Listing | null = null;
+  startDateInput = '';
   errorMessage = '';
   successMessage = '';
   isLoading = false;
@@ -49,6 +50,7 @@ export class ListingEditComponent implements OnInit {
     this.listingService.getListing(this.listingCode).subscribe({
       next: (data) => {
         this.listing = data;
+        this.startDateInput = data.start ? data.start.substring(0, 10) : '';
         this.isLoading = false;
       },
       error: (err: Error) => {
@@ -69,7 +71,15 @@ export class ListingEditComponent implements OnInit {
     this.errorMessage = '';
     this.successMessage = '';
 
-    this.listingService.updateListing(this.listingCode, this.listing).subscribe({
+    // Send the picked date back as an ISO string.
+    const payload: Listing = {
+      ...this.listing,
+      start: this.startDateInput
+        ? new Date(this.startDateInput).toISOString()
+        : this.listing.start
+    };
+  
+    this.listingService.updateListing(this.listingCode, payload).subscribe({
       next: () => {
         this.successMessage = 'Listing updated successfully.';
         this.router.navigate(['/']);

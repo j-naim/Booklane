@@ -8,7 +8,7 @@
     <input [(ngModel)]="listing.code" name="code" placeholder="Code" required />
     <input [(ngModel)]="listing.name" name="name" placeholder="Name" required />
     <input [(ngModel)]="listing.length" name="length" placeholder="Length" required />
-    <input [(ngModel)]="listing.start" name="start" placeholder="Start (ISO date)" required />
+    <input type="date" [(ngModel)]="startDateInput" name="start" required />
     <input [(ngModel)]="listing.resort" name="resort" placeholder="Resort" required />
     <input [(ngModel)]="listing.perPerson" name="perPerson" placeholder="Per Person" required />
     <input [(ngModel)]="listing.image" name="image" placeholder="Image path" required />
