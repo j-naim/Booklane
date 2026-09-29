@@ -1,21 +1,33 @@
-<h1>Booklane Admin</h1>
+<mat-toolbar class="app-toolbar">
+  <a routerLink="/" class="wordmark">Booklane</a>
 
-<nav>
-  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Listings</a>
-  
+  <nav class="nav-links">
+    <a mat-button routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">
+      Listings
+    </a>
+    @if (authService.isLoggedIn()) {
+      <a mat-button routerLink="/add" routerLinkActive="active-link">
+        Add Listing
+      </a>
+    }
+  </nav>
+
+  <span class="spacer"></span>
+
+  <button mat-icon-button (click)="toggleDarkMode()" [attr.aria-label]="isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode'">
+    <mat-icon>{{ isDarkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+  </button>
+
   @if (authService.isLoggedIn()) {
-    |
-    <a routerLink="/add" routerLinkActive="active">Add Listing</a>
-    |
-    <span> Hi, {{ authService.currentUserName() }}</span> 
-    &bull;
-    <a href="#" (click)="$event.preventDefault(); logout()">Logout</a>
+    <span class="user-greeting">Hi, {{ authService.currentUserName() }}</span>
+    <button mat-button (click)="logout()">Logout</button>
   } @else {
-    |
-    <a routerLink="/login" routerLinkActive="active">Login</a>
+    <a mat-button routerLink="/login">Login</a>
   }
-</nav>
+</mat-toolbar>
 
-<router-outlet></router-outlet>
+<main class="app-content">
+  <router-outlet></router-outlet>
+</main>
 
 
