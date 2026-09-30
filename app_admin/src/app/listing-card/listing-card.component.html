@@ -1,5 +1,32 @@
-<h3>{{ listing.name }} ({{ listing.code }})</h3>
-<p><strong>Resort:</strong> {{ listing.resort }}</p>
-<p><strong>Length:</strong> {{ listing.length }}</p>
-<p><strong>Per Person:</strong> {{ listing.perPerson }}</p>
-<a [routerLink]="['/edit', listing.code]">Edit</a>
+<mat-card class="listing-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{ listing.name }}</mat-card-title>
+    <mat-card-subtitle>
+      <span class="listing-code">{{ listing.code }}</span>
+      <span class="separator">·</span>
+      <span>{{ listing.resort }}</span>
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <dl class="listing-facts">
+      <div class="fact">
+        <dt>Length</dt>
+        <dd>{{ listing.length }}</dd>
+      </div>
+      <div class="fact">
+        <dt>Per person</dt>
+        <dd class="price">${{ listing.perPerson }}</dd>
+      </div>
+    </dl>
+  </mat-card-content>
+
+  @if (authService.isLoggedIn()) {
+    <mat-card-actions align="end">
+      <a mat-button color="primary" [routerLink]="['/edit', listing.code]">
+        <mat-icon>edit</mat-icon>
+        Edit
+      </a>
+    </mat-card-actions>
+  }
+</mat-card>
