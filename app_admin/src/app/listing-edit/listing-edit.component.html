@@ -1,20 +1,96 @@
-<h2>Edit Listing {{ listingCode }}</h2>
+<header class="page-header">
+  <div>
+    <h1>
+      Edit Listing
+      <span class="listing-code">{{ listingCode }}</span>
+    </h1>
+    <p class="subtitle">Update this listing's details.</p>
+  </div>
+  <a mat-stroked-button routerLink="/">
+    <mat-icon>arrow_back</mat-icon>
+    Back to listings
+  </a>
+</header>
 
-<div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-<div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+@if (isLoading) {
+  <div class="state-container">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+} @else if (errorMessage && !listing) {
+  <div class="state-container error">
+    <mat-icon>error_outline</mat-icon>
+    <p>{{ errorMessage }}</p>
+  </div>
+} @else if (listing) {
+  <mat-card appearance="outlined" class="form-card">
+    <mat-card-content>
+      <form (ngSubmit)="onSave()" #editForm="ngForm">
+        <div class="form-grid">
+          <mat-form-field appearance="outline">
+            <mat-label>Code</mat-label>
+            <input matInput [(ngModel)]="listing.code" name="code" required class="mono-input" />
+          </mat-form-field>
 
-<div *ngIf="listing">
-  <form (ngSubmit)="onSave()">
-    <input [(ngModel)]="listing.code" name="code" placeholder="Code" required />
-    <input [(ngModel)]="listing.name" name="name" placeholder="Name" required />
-    <input [(ngModel)]="listing.length" name="length" placeholder="Length" required />
-    <input type="date" [(ngModel)]="startDateInput" name="start" required />
-    <input [(ngModel)]="listing.resort" name="resort" placeholder="Resort" required />
-    <input [(ngModel)]="listing.perPerson" name="perPerson" placeholder="Per Person" required />
-    <input [(ngModel)]="listing.image" name="image" placeholder="Image path" required />
-    <textarea [(ngModel)]="listing.description" name="description" placeholder="Description" required></textarea>
+          <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput [(ngModel)]="listing.name" name="name" required />
+          </mat-form-field>
 
-    <button type="submit">Update</button>
-    <button type="button" (click)="onDelete()">Delete</button>
-  </form>
-</div>
+          <mat-form-field appearance="outline">
+            <mat-label>Length</mat-label>
+            <input matInput [(ngModel)]="listing.length" name="length" required />
+            <mat-hint>e.g. 5 Days / 6 Nights</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Start date</mat-label>
+            <input matInput type="date" [(ngModel)]="startDateInput" name="start" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Resort</mat-label>
+            <input matInput [(ngModel)]="listing.resort" name="resort" required />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Per person</mat-label>
+            <span matTextPrefix>$&nbsp;</span>
+            <input matInput type="number" [(ngModel)]="listing.perPerson" name="perPerson" required class="mono-input" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Image path</mat-label>
+            <input matInput [(ngModel)]="listing.image" name="image" required class="mono-input" />
+            <mat-hint>Relative path within /public/images/</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput [(ngModel)]="listing.description" name="description" required rows="4"></textarea>
+            <mat-hint>Supports basic HTML.</mat-hint>
+          </mat-form-field>
+        </div>
+
+        @if (errorMessage) {
+          <div class="inline-error">
+            <mat-icon>error_outline</mat-icon>
+            <span>{{ errorMessage }}</span>
+          </div>
+        }
+
+        <div class="form-actions">
+          <button mat-button type="button" (click)="onDelete()" class="delete-button">
+            <mat-icon>delete_outline</mat-icon>
+            Delete
+          </button>
+          <div class="primary-actions">
+            <a mat-button routerLink="/">Cancel</a>
+            <button mat-flat-button color="primary" type="submit" [disabled]="editForm.invalid">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+}

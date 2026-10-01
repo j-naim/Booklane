@@ -1,16 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, ParamMap } from '@angular/router';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule} from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
 import { ListingDataService, Listing } from '../services/listing-data.service';
+import { ConfirmDialogComponent } from '../shared/confirm-dialog.component';
 
 @Component({
   selector: 'app-listing-edit',
   standalone: true,
-  imports: [CommonModule, FormsModule],
-  templateUrl: './listing-edit.component.html'
+  imports: [
+    CommonModule, 
+    FormsModule,
+    RouterLink,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+    MatProgressSpinnerModule
+  ],
+  templateUrl: './listing-edit.component.html',
+  styleUrl: './listing-edit.component.css'
 })
-export class ListingEditComponent implements OnInit {
+export class ListingEditComponent {
+  private readonly snackBar = inject(MatSnackBar);
+  private readonly dialog = inject(MatDialog);
+
   listingCode = '';
   listing: Listing | null = null;
   startDateInput = '';
@@ -45,7 +68,6 @@ export class ListingEditComponent implements OnInit {
   loadListing(): void {
     this.isLoading = true;
     this.errorMessage = '';
-    this.successMessage = '';
 
     this.listingService.getListing(this.listingCode).subscribe({
       next: (data) => {
@@ -69,7 +91,6 @@ export class ListingEditComponent implements OnInit {
     }
 
     this.errorMessage = '';
-    this.successMessage = '';
 
     // Send the picked date back as an ISO string.
     const payload: Listing = {
@@ -81,7 +102,7 @@ export class ListingEditComponent implements OnInit {
   
     this.listingService.updateListing(this.listingCode, payload).subscribe({
       next: () => {
-        this.successMessage = 'Listing updated successfully.';
+        this.snackBar.open('Listing updated', 'Dismiss', { duration: 3000});
         this.router.navigate(['/']);
       },
       error: (err: Error) => {
@@ -92,22 +113,30 @@ export class ListingEditComponent implements OnInit {
 
   // Delete the current listing and return to the main page.
   onDelete(): void {
-    if (!this.listingCode) {
-      this.errorMessage = 'Listing code is missing.';
-      return;
-    }
+    if (!this.listing) return;
+      
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Delete Listing?',
+        message: `This will permanently delete "${this.listing.name}" (${this.listing.code}). This cannot be undone`,
+        confirmText: 'Delete',
+        confirmColor: 'warn'
+      }
+    });
 
-    this.errorMessage = '';
-    this.successMessage = '';
-
+    dialogRef.afterClosed().subscribe((confirm) => {
+      if (!confirm) return;
+    
     this.listingService.deleteListing(this.listingCode).subscribe({
       next: () => {
-        this.successMessage = 'Listing deleted successfully.';
+        this.snackBar.open('Listing deleted', 'Dismiss', { duration: 3000});
         this.router.navigate(['/']);
       },
       error: (err: Error) => {
         this.errorMessage = err.message;
       },
     });
-  }
+  });
 }
+}
+
