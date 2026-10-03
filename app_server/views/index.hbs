@@ -1,8 +1,33 @@
 {{> header}}
 
-<div id="contents">
-  <h1>Home</h1>
-  <p>Rendered via HBS using MVC routes/controllers.</p>
-</div>
+<section class="mx-auto max-w-6xl px-6 py-24">
+  <p class="mb-4 font-mono text-sm text-accent dark:text-accent-light">// bookings, simplified</p>
+  <h1 class="max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">Find your next getaway.</h1>
+  <p class="mt-6 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
+    Hand-picked trips with clear pricing and real availability, updated live as our team manages the inventory.
+  </p>
+  <div class="mt-10 flex flex-wrap gap-4">
+    <a href="/travel" class="rounded-full bg-accent px-6 py-3 font-medium text-white hover:bg-accent-hover dark:bg-accent-light dark:text-zinc-950">
+      Browse trips
+    </a>
+  </div>
+</section>
+
+<section class="border-t border-zinc-200 dark:border-zinc-800">
+  <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 sm:grid-cols-3">
+    <div>
+      <h2 class="font-semibold">Curated trips</h2>
+      <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Every listing is reviewed and managed by our team before it goes live.</p>
+    </div>
+    <div>
+      <h2 class="font-semibold">Clear pricing</h2>
+      <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Per-person prices up front. No surprises at checkout.</p>
+    </div>
+    <div>
+      <h2 class="font-semibold">Live inventory</h2>
+      <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Trips update the moment they change, straight from our booking system.</p>
+    </div>
+  </div>
+</section>
 
 {{> footer}}

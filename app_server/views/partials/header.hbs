@@ -1,18 +1,72 @@
 <!doctype html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>{{title}}</title>
-    <link rel="stylesheet" href="/css/style.css" />
-  </head>
-  <body>
-    <div id="page">
-      <div id="header">
-        <div id="logo">
-          <a href="/" class="logo-wordmark">Booklane</a>
-        </div>
-        <ul id="navigation">
-          <li><a href="/">Home</a></li>
-          <li><a href="/travel">Travel</a></li>
-        </ul>
-      </div>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{title}}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    // apply the saved theme so there's no light-mode flash.
+    (function () {
+      try {
+        var stored = localStorage.getItem('booklane-dark-mode');
+        var dark = stored !== null
+          ? stored === 'true'
+          : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+
+    function toggleTheme() {
+      var isDark = document.documentElement.classList.toggle('dark');
+      try { localStorage.setItem('booklane-dark-mode', String(isDark)); } catch (e) {}
+    }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // brand tokens, matching the admin theme.
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            accent: { DEFAULT: '#8b1a3f', hover: '#701432', light: '#c73659' }
+          },
+          fontFamily: {
+            sans: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="min-h-screen flex flex-col bg-white text-zinc-900 font-sans antialiased dark:bg-zinc-950 dark:text-zinc-100">
+  <header class="border-b border-zinc-200 dark:border-zinc-800">
+    <div class="mx-auto flex h-16 max-w-6xl items-center gap-8 px-6">
+      <a href="/" class="font-mono text-2xl font-bold tracking-tight text-accent dark:text-accent-light">Booklane</a>
+
+      <nav class="flex gap-6 text-sm font-medium">
+        <a href="/" class="{{#if isHome}}text-accent dark:text-accent-light{{else}}text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100{{/if}}">Home</a>
+        <a href="/travel" class="{{#if isTravel}}text-accent dark:text-accent-light{{else}}text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100{{/if}}">Trips</a>
+      </nav>
+
+      <button type="button" onclick="toggleTheme()" aria-label="Toggle dark mode"
+        class="ml-auto rounded-full p-2 text-zinc-600 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800">
+        <svg class="h-5 w-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+        </svg>
+        <svg class="hidden h-5 w-5 dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4" />
+          <path stroke-linecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-1">
