@@ -4,6 +4,14 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+}
+
+.listing-card:hover {
+  --mdc-outlined-card-outline-color: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .listing-card mat-card-title {

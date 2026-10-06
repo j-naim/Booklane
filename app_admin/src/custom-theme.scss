@@ -110,3 +110,11 @@ html[data-theme="dark"] {
   --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
+
+// style the body so dark mode has proper background everywhere 
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  margin: 0;
+  font-family: var(--font-body);
+}

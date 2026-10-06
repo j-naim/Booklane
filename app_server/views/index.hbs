@@ -1,30 +1,54 @@
 {{> header}}
 
-<section class="mx-auto max-w-6xl px-6 py-24">
-  <p class="mb-4 font-mono text-sm text-accent dark:text-accent-light">// bookings, simplified</p>
-  <h1 class="max-w-3xl text-4xl font-bold tracking-tight sm:text-6xl">Find your next getaway.</h1>
-  <p class="mt-6 max-w-2xl text-lg text-zinc-600 dark:text-zinc-400">
-    Hand-picked trips with clear pricing and real availability, updated live as our team manages the inventory.
-  </p>
-  <div class="mt-10 flex flex-wrap gap-4">
-    <a href="/travel" class="rounded-full bg-accent px-6 py-3 font-medium text-white hover:bg-accent-hover dark:bg-accent-light dark:text-zinc-950">
-      Browse trips
-    </a>
+<section class="relative overflow-hidden">
+  <div class="dot-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+
+  <div class="relative mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-2 lg:py-28">
+    <div>
+      <span class="inline-flex items-center gap-2 rounded-full border border-accent/30 bg-accent/5 px-3 py-1 text-xs font-medium text-accent dark:border-accent-light/40 dark:bg-accent-light/10 dark:text-accent-light">
+        <span class="relative flex h-2 w-2">
+          <span class="absolute inline-flex h-full w-full rounded-full bg-accent opacity-60 motion-safe:animate-ping dark:bg-accent-light"></span>
+          <span class="relative inline-flex h-2 w-2 rounded-full bg-accent dark:bg-accent-light"></span>
+        </span>
+        Live inventory
+      </span>
+
+      <h1 class="mt-6 text-4xl font-bold tracking-tight sm:text-6xl">Your next trip, booked.</h1>
+      <p class="mt-6 max-w-xl text-lg text-zinc-600 dark:text-zinc-400">
+        Hand-picked trips with clear pricing and real availability, updated live as our team manages the inventory.
+      </p>
+
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a href="/travel" class="rounded-full bg-accent px-6 py-3 font-medium text-white hover:bg-accent-hover dark:bg-accent-light dark:text-zinc-950">
+          Browse trips
+        </a>
+        <span class="font-mono text-sm text-zinc-500">// updated in real time</span>
+      </div>
+    </div>
+
+    <div class="grid h-80 grid-cols-2 grid-rows-2 gap-3 sm:h-96" aria-hidden="true">
+      <img src="/images/reef1.jpg" alt="" class="row-span-2 h-full w-full rounded-2xl object-cover" />
+      <img src="/images/reef2.jpg" alt="" class="h-full w-full rounded-2xl object-cover" />
+      <img src="/images/reef3.jpg" alt="" class="h-full w-full rounded-2xl object-cover" />
+    </div>
   </div>
 </section>
 
 <section class="border-t border-zinc-200 dark:border-zinc-800">
   <div class="mx-auto grid max-w-6xl gap-10 px-6 py-16 sm:grid-cols-3">
     <div>
-      <h2 class="font-semibold">Curated trips</h2>
+      <span class="font-mono text-sm text-accent dark:text-accent-light">01</span>
+      <h2 class="mt-2 font-semibold">Curated trips</h2>
       <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Every listing is reviewed and managed by our team before it goes live.</p>
     </div>
     <div>
-      <h2 class="font-semibold">Clear pricing</h2>
+      <span class="font-mono text-sm text-accent dark:text-accent-light">02</span>
+      <h2 class="mt-2 font-semibold">Clear pricing</h2>
       <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Per-person prices up front. No surprises at checkout.</p>
     </div>
     <div>
-      <h2 class="font-semibold">Live inventory</h2>
+      <span class="font-mono text-sm text-accent dark:text-accent-light">03</span>
+      <h2 class="mt-2 font-semibold">Live inventory</h2>
       <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-400">Trips update the moment they change, straight from our booking system.</p>
     </div>
   </div>

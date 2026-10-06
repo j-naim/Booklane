@@ -1,5 +1,6 @@
 .app-toolbar {
   background: var(--bg-elevated);
+  border-top: 2px solid var(--accent);
   border-bottom: 1px solid var(--border-subtle);
   color: var(--text-primary);
   gap: var(--space-2);
@@ -10,14 +11,28 @@
   font-family: var(--font-wordmark);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--text-primary);
   text-decoration: none;
   letter-spacing: -0.02em;
   margin-right: var(--space-6);
 }
 
 .wordmark:hover {
-  color: var(--accent-hover);
+  color: var(--accent);
+}
+
+/* cursor blinks on load and then stays solid */
+.cursor {
+  color: var(--accent);
+  animation: blink 1s steps(1) 4;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; }
 }
 
 .nav-links {
@@ -25,9 +40,25 @@
   gap: var(--space-1);
 }
 
+.nav-links a {
+  position: relative;
+}
+
 .nav-links .active-link {
   color: var(--accent);
   font-weight: 600;
+}
+
+/* burg. underline under current page link */
+.nav-links .active-link::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 2px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--accent);
 }
 
 .spacer {
@@ -44,13 +75,5 @@
   padding: var(--space-6);
   background: var(--bg-primary);
   color: var(--text-primary);
-  min-height: calc(100vh - 64px);
-}
-
-/* style the body so dark mode has proper background everywhere */
-body {
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  margin: 0;
-  font-family: var(--font-body);
+  min-height: calc(100vh - 67px);
 }
