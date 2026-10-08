@@ -1,32 +1,62 @@
 [
   {
-    "code": "GR001",
-    "name": "Gale Reef",
-    "length": "5 Days / 6 Nights",
-    "start": "2026-02-01T08:00:00Z",
-    "resort": "Emerald Bay, 3 stars",
-    "perPerson": "799.00",
-    "image": "images/reef1.jpg",
-    "description": "<p><strong>Gale Reef</strong></p>"
+    "code": "PAT01",
+    "name": "Patagonia W Trek",
+    "length": "8 Days / 7 Nights",
+    "start": "2027-01-10T00:00:00.000Z",
+    "perPerson": 2980,
+    "image": "images/pat01.jpg",
+    "description": "<p>An 8-day expedition through Torres del Paine’s legendary granite towers, massive glaciers, and windswept valleys.</p>",
+    "location": "Torres del Paine, Chile"
   },
   {
-    "code": "DR002",
-    "name": "Dawson's Reef",
-    "length": "5 Days / 6 Nights",
-    "start": "2026-02-01T08:00:00Z",
-    "resort": "Blue Lagoon, 4 stars",
-    "perPerson": "1299.00",
-    "image": "images/reef2.jpg",
-    "description": "<p><strong>Dawson's Reef</strong></p>"
+    "code": "KUM01",
+    "name": "Kumano Kodo Pilgrimage",
+    "length": "6 Days / 5 Nights",
+    "start": "2027-04-12T00:00:00.000Z",
+    "perPerson": 2460,
+    "image": "images/kum01.jpg",
+    "description": "<p>A 6-day journey through Honshu's sacred mountains, where historic pilgrimage trails meet dramatic coastal scenery.</p>",
+    "location": "Kii Peninsula, Japan"
   },
   {
-    "code": "CR003",
-    "name": "Claire's Reef",
-    "length": "5 Days / 6 Nihgts",
-    "start": "2026-02-01T08:00:00Z",
-    "resort": "Coral Sands, 5 stars",
-    "perPerson": "1999.00",
-    "image": "images/reef3.jpg",
-    "description": "<p><strong>Claire's Reef</strong></p>"
+    "code": "WEU01",
+    "name": "Western Europe by Rail",
+    "length": "21 Days / 20 Nights",
+    "start": "2027-06-05T00:00:00.000Z",
+    "perPerson": 2690,
+    "image": "images/weu01.jpg",
+    "description": "<p>A comprehensive three-week journey weaving together London's historic landmarks, Paris's iconic romance, and Barcelona's sun-drenched Mediterranean flair.</p>",
+    "location": "London → Paris → Barcelona"
+  },
+  {
+    "code": "ZAF01",
+    "name": "Cape Town and Kruger Safari",
+    "length": "10 Days / 9 Nights",
+    "start": "2027-08-16T00:00:00.000Z",
+    "perPerson": 3290,
+    "image": "images/zaf01.jpg",
+    "description": "<p>Ten days split between the vibrant urban energy of the Mother City and the raw thrill of tracking wildlife across South Africa’s premier game reserve.</p>",
+    "location": "Cape Town and Kruger, South Africa"
+  },
+  {
+    "code": "CEU01",
+    "name": "Central Europe by Rail",
+    "length": "21 Days / 20 Nights",
+    "start": "2027-09-04T00:00:00.000Z",
+    "perPerson": 2190,
+    "image": "images/ceu01.jpg",
+    "description": "<p>An immersive 21-day journey tracing the rich imperial history, fairy-tale architecture, and vibrant cultural landscapes across four of the region's most captivating cities.</p>",
+    "location": "Prague → Vienna → Budapest → Kraków"
+  },
+  {
+    "code": "EUR28",
+    "name": "Summer of Football 2028",
+    "length": "32 Days / 31 Nights",
+    "start": "2028-06-08T00:00:00.000Z",
+    "perPerson": 7450,
+    "image": "images/eur28.jpg",
+    "description": "<p>Experience a massive 32-day football expedition across four host nations, following the tournament's thrilling progression from the opening match in Cardiff all the way to the historic final at Wembley.</p>\n<p><small><em>*Please note: Match tickets are not included in this tour package.</em></small></p>",
+    "location": "England, Scotland, Wales and Ireland"
   }
 ]

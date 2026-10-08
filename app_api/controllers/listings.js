@@ -17,7 +17,7 @@ const LISTING_FIELDS = [
   "name",
   "length",
   "start",
-  "resort",
+  "location",
   "perPerson",
   "image",
   "description",

@@ -35,7 +35,7 @@ export class ListingAddComponent {
     name: '',
     length: '',
     start: '',
-    resort: '',
+    location: '',
     perPerson: '',
     image: '',
     description: ''

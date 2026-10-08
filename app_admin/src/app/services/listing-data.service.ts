@@ -9,7 +9,7 @@ export interface Listing {
   name: string;
   length: string;
   start: string;
-  resort: string;
+  location: string;
   perPerson: string;
   image: string;
   description: string;

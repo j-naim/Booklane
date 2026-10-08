@@ -41,9 +41,9 @@ const listingSchema = new mongoose.Schema(
         message: "Start date must be valid",
       },
     },
-    resort: {
+    location: {
       type: String,
-      required: [true, "Resort is required"],
+      required: [true, "location is required"],
       trim: true,
     },
     perPerson: {
